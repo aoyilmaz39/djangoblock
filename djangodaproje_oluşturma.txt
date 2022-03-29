@@ -1,0 +1,30 @@
+priyeyi oluşturmak istediğimiz dizine giderek 
+cmd-->django-admin --startproject projeadı
+böylece 5 dosyamız otomatik olarak django tarafından bir klasör içinde oluşur.
+
+manage.py
+	herhangi bir uygulama oluşturmak istediğimiz zaman veya herhangibir komut çalıştırmak istediğimiz zaman
+	kullanacağımız bir dosyamı bu dosya burada devamlı kalacak ve biz bunun içine dokunmıycaz
+blog içinde
+
+init.py
+	bu klasörümüzün bu projenin bir python modülü olduğunu söyler
+settings.py
+	burda django klasöründeki ayarların yapıldığı ayarlarımızın bulunduğu dosyadır.
+	django sqlite3 database ini kullanır.
+	yeri gelince buna müdehale ederiz
+url.py
+	flask tarafında her bir url adresimşz bir fonk. çalıştırıyordu
+	burdada url adreslerimizi verince çalıştırılıcak kod ve fonk. çalıştırıcak 
+	bu dosyanın içine yazacağız
+wsgi.py
+	bu dosyamızda bizim web sunucusuyla ilgili ayarlamızının yapıldığı dosyamız
+
+django projelerimizde ayar yapmak istediğimizde de settings.py dosyası üzerinden gerçekleştireceğiz
+
+
+Settingsin içerizinde INSTALLED_APPS şeklinde bir bölüm bulunuyor burada django içerisindeki hazır uygulamalar bulunuyor
+bizde kendi oluşturduğumuz uygulamalarımızı buraya eklememz gerekiyor.
+Djangonun içindeki hazır uygulamaların database te tablolara ihtiyacı oluyor ve bizim yeni açtığımız tadabase te bunlar olmadığı için 
+cmd ile proje konumumuza gidip     ->python manage.py migrate       yazarak bunları oluşturabiliyoruz.
+manage.py komutlarını araştırıp diğer işlevlerine bakabiliriz.

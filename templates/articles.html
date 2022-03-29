@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Makaleler</h3>
+<hr>
+
+<div class="row">
+    <div class="col-lg-8 offset-md-1">
+        <div class="col-lg-8">
+            <form id="form">
+            {% csrf_token %} 
+            <input type="search" id="query" name="keyword" placeholder="Search...">
+            <button type="submit" class="btn btn-success">Search</button>
+            </form>
+        
+        </div>
+    </div>
+</div>
+
+{% if articles %}
+
+{% for article in articles  %}
+
+    <div class="row">
+                <div class="col-lg-8 offset-md-1">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-8">
+                            <!-- Post title-->
+                            <a href="/articles/article/{{article.id}}"><h1 class="fw-bolder mb-1">{{article.title}}</h1></a>
+                            <hr>
+                            <p class="lead">By {{article.author.username}} <hr></p>
+                            <!-- Post meta content-->
+                             <p>{{article.created_date}} </p>                         
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                        </header>
+                        <!-- Preview image figure-->
+                        {% if article.article_image %}
+                            <img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." />
+                        {% endif %}                        <!-- Post content-->
+                        <section class="mb-5">
+
+                            {{article.content|safe|truncatewords:10}}<!-- BUnlar django template filtreleridir istediğimiz  zaman internet sitesinden ulaşabiiliriz.-->
+                            <a href="/articles/article/{{article.id}}">devamını oku.</a>
+                            <hr>
+                            
+                        </section>
+                    </article>
+                    
+                </div>
+        </div>
+
+{% endfor %}
+
+{% else %}
+<div class="alert alert-danger">Herhangi bir makale bulunmuyor</div>
+{% endif %}
+
+{% endblock body %}

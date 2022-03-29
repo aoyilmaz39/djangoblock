@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+
+<div style="margin-top : 100px;" class="jumbotron text-center">
+    <h3>Yazılım Bilimi Bloğuna Hoşgeldiniz.</h3>
+    <p>BU blogta geliştiriciler olarak blog yazılarımızı paylaşarakbirbirimize yardımcı oluyoruz.</p>
+</div>
+
+<p>
+    {% if request.user.is_authenticated %} <!-- eğer giriş yapılmışsa true döner-->
+        {{request.user.username}} Online.
+    {% else %}
+        Offline...
+    {% endif %}
+
+</p>
+
+<ul>
+{% for number in numbers  %}
+    <li>{{number}}</li>
+{% endfor %}
+</ul>
+{% endblock body %}

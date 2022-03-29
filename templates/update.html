@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% load crispy_forms_tags %} <!-- Crispy filtresini kullanmak için bunun eklememiz gerekiyor. -->
+
+<div class="row">
+<div class="col-md-6 offset-md-3" align="center">
+
+<h3>Makale Güncelle.</h3>
+    <hr>
+    <form method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}<!-- Bununla ck editörümüzü projemize dahil etmiş olduk -->
+
+        {{form|crispy}} <!-- Bizim burada bir template filresi kullanmamız gerekiyor bunuda dışarıdan indirmemiz gerekiyor. -->
+        <br> <!-- django crispy forms yazarak indirebilriz. -->
+        <!-- filtremizi indirdikten sonra gerekli setting ayarlarını girdikten sonra form.as_p yerine uygulamanın söylediği filtreyi söylüyoruz. -->
+        <button type = "submit" class = "btn btn-danger">Kaydet</button>
+
+    </form>
+
+</div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <a class="navbar-brand" href="{% url 'index' %}">AOY Blok</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto"> <!-- mr-auto sola yaslar ml-auto sağ yaslar-->
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'about' %}">Hakkımızda</a><!-- Dinamik url yöntemi -->
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'article:articles' %}">Dedikodular</a><!-- Dinamik url yöntemi -->
+          </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/articles">Makaleler</a>
+          </li>
+        
+       
+      </ul>
+      <ul class="navbar-nav ml-auto"> <!-- mr-auto sola yaslar ml-auto sağ yaslar-->
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="/articles/dashboard">Kontrol Paneli</a>
+        </li>
+
+        {% if request.user.is_authenticated %} <!-- eğer giriş yapılmışsa true döner-->
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:logout' %}" text="#FF0000">Çıkış Yap</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+            <a class="nav-link" href="/user/login"><i class="fa-solid fa-user-astronaut"></i>Giriş Yap</a>
+        </li>
+        {% endif %}
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/register">Kayıt ol</a>
+        </li>
+          
+      </ul>
+
+    </div>
+  </nav>
